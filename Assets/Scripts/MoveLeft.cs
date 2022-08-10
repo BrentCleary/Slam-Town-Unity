@@ -9,7 +9,7 @@ public class MoveLeft : MonoBehaviour
     private float boostSpeed = 60;
     private float dragGroundValue = 3f;
     private float dragAirValue = 0.5f;
-    private float leftBound = -20;
+    private float leftBound = -200;
     private ParticleSystem jumpParticle;
 
     // You can call a Class the same way you call a GameObject

@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
     public ParticleSystem jumpParticle;
-    private Vector3 jumpParticpleSpawnPos;
+    private Vector3 jumpParticleSpawnPos;
 
     private AudioSource playerAudio;
     public AudioClip jumpSound;
@@ -19,7 +19,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 50.0f;
     public float gravityModifier = 20.0f;
     public float score;
-    public float playerTilt;
+    public Vector3 playerTilt;
+
     public bool isOnGround = true;
     public bool gameOver;
     public bool secondJump;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     public bool boostOn;
     public float speed;
 
-    public bool powerUpCollision = false;
+    public bool powerUpState = false;
 
     private MoveLeft moveLeftScript;
 
@@ -38,7 +39,6 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         playerAnim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
-        playerTilt = transform.rotation.z;
 
         // Updated Physics.gravity - Physics.gravity = Physics.gravity * gravityModifier
         Physics.gravity *= gravityModifier;
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        jumpParticpleSpawnPos = new Vector3(playerRb.transform.position.x, playerRb.transform.position.y, playerRb.transform.position.z);
+        jumpParticleSpawnPos = new Vector3(playerRb.transform.position.x, playerRb.transform.position.y, playerRb.transform.position.z);
 
         Jump1();
         Jump2();
@@ -69,11 +69,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             dirtParticle.Play();
         }
-        else if(collision.gameObject.CompareTag("Powerup"))
-        {
-            Debug.Log("PoooooweeeeeeerUUUUUUUUUUUUUPPPPPPPPP");
-            powerUpCollision = true;
-        }
+        
         else if(collision.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log("Game Over");
@@ -86,6 +82,16 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Powerup"))
+        {
+            Debug.Log("PoooooweeeeeeerUUUUUUUUUUUUUPPPPPPPPP");
+            powerUpState = true;
+        }
+    }
+
 
     // Original Jump Script
 
@@ -108,6 +114,7 @@ public class PlayerController : MonoBehaviour
 
     // Copy Jump() for testing
 
+
     void Jump1()
     {
         if(Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver) //gameOver != true
@@ -120,7 +127,7 @@ public class PlayerController : MonoBehaviour
 
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
-            Instantiate(jumpParticle, jumpParticpleSpawnPos, jumpParticle.transform.rotation);
+            Instantiate(jumpParticle, jumpParticleSpawnPos, jumpParticle.transform.rotation);
             playerAudio.PlayOneShot(jumpSound, 1.0f);
 
         }
@@ -134,7 +141,7 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetTrigger("Jump_trig");
             secondJump = false;
 
-            Instantiate(jumpParticle, jumpParticpleSpawnPos, jumpParticle.transform.rotation);
+            Instantiate(jumpParticle, jumpParticleSpawnPos, jumpParticle.transform.rotation);
             playerAudio.PlayOneShot(jumpSound, 1.0f);
 
         }

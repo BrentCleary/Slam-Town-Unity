@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5292985a-664b-df4c-7997-392bf3fcb52e}</ProjectGuid>
+    <ProjectGuid>{296580f4-1686-4c75-045b-d21b9a72714f}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Unity.Rider.Editor</AssemblyName>
@@ -298,7 +298,7 @@
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-        <HintPath>C:/Users/Brent/Desktop/create_with_code-bc/Prototype3/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
+        <HintPath>C:/Users/Brent/Desktop/create_with_code-bc/SlamTown/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
         <HintPath>C:/Program Files/Unity/Hub/Editor/2020.3.11f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -651,19 +651,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{9d03ac70-9b8a-4e77-e77f-d2e1c6a421ae}</Project>
+      <Project>{b5172b92-054a-2935-fa7d-4375b77bd8e5}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{edd8d9ab-43e9-dab0-31f4-648522645a23}</Project>
+      <Project>{5bde847f-9d35-32c6-43cd-62d0d0f4360e}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{f4fe0f64-413a-778b-763a-46968a936352}</Project>
+      <Project>{3516e630-f1d2-21b1-4f25-238a7f8d848a}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{8b8d0c27-2567-0ceb-709b-e969af45e4d5}</Project>
+      <Project>{170b8e82-19c7-b985-9fcc-5d8395fbfc75}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>
