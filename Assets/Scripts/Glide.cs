@@ -31,7 +31,7 @@ public class Glide : MonoBehaviour
 
     void Glider()
     {
-        if(Input.GetKey(KeyCode.G) && !playerControllerScript.isOnGround)
+        if(Input.GetKey(KeyCode.G) && !playerControllerScript.isOnGround && !playerControllerScript.gameOver)
         {
             Debug.Log("Gliding");
             gliding = true;

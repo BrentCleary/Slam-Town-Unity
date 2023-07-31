@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem explosionParticle;
     public ParticleSystem dirtParticle;
     public ParticleSystem jumpParticle;
+    public ParticleSystem powerUpParticle;
     private Vector3 jumpParticleSpawnPos;
 
     private AudioSource playerAudio;
@@ -31,7 +35,8 @@ public class PlayerController : MonoBehaviour
 
     public bool powerUpState = false;
 
-    private MoveLeft moveLeftScript;
+    public GameManager gameManager;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -44,9 +49,7 @@ public class PlayerController : MonoBehaviour
         Physics.gravity *= gravityModifier;
         boostOn = false;
 
-        moveLeftScript = GameObject.Find("Background").GetComponent<MoveLeft>();
-        speed = moveLeftScript.speed;
-
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -54,10 +57,10 @@ public class PlayerController : MonoBehaviour
     {
         jumpParticleSpawnPos = new Vector3(playerRb.transform.position.x, playerRb.transform.position.y, playerRb.transform.position.z);
 
+
         Jump1();
         Jump2();
         Boost();
-        ScoreCounter();
 
     }
 
@@ -87,11 +90,12 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Powerup"))
         {
-            Debug.Log("PoooooweeeeeeerUUUUUUUUUUUUUPPPPPPPPP");
             powerUpState = true;
+
+            Debug.Log("PoooooweeeeeeerUUUUUUUUUUUUUPPPPPPPPP");
+            
         }
     }
-
 
     // Original Jump Script
 
@@ -113,7 +117,6 @@ public class PlayerController : MonoBehaviour
 
 
     // Copy Jump() for testing
-
 
     void Jump1()
     {
@@ -165,16 +168,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
-    // Increases the score over time, and multiplies by the speed
-    void ScoreCounter()
-    {
-        if(!gameOver) 
-        {
-            score += (Time.deltaTime * speed); // boostSpeed / runSpeed
-        }
-        // Debug.Log("Score = " + Mathf.Ceil(score));
-    }
 
 }
 
