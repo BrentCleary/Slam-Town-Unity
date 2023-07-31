@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
 {
+    // Lerp Controls
+    // C and V
+
+
     public Vector3 cameraPos;
     public Vector3 startPos = new Vector3(10, 10, -50); // This variable may be redundant
     public Vector3 behindPos = new Vector3(-30, 6, 0);

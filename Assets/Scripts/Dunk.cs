@@ -38,6 +38,7 @@ public class Dunk : MonoBehaviour
             Debug.Log("SLAM DUNK");
             dunkParticles.Play();
             GetComponent<Renderer>().material.color = Color.green;
+            GetComponent<MeshRenderer>().enabled = false;
         }
     }
 
